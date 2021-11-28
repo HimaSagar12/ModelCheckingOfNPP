@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+
+clock x,y;
+
+chan approach,lower,raise,exot,danger,reset,trip,normal,sendtrip,normalsign,warning,end;</declaration>
+	<template>
+		<name>gas</name>
+		<location id="id0" x="-68" y="-263">
+			<name x="-78" y="-297">tolt</name>
+		</location>
+		<location id="id1" x="-408" y="-25">
+			<name x="-418" y="-59">lott</name>
+			<label kind="invariant" x="-418" y="-8">y&lt;=6</label>
+		</location>
+		<location id="id2" x="-34" y="-34">
+			<name x="-25" y="-59">ltto</name>
+			<label kind="invariant" x="-44" y="-17">x&lt;=6</label>
+		</location>
+		<location id="id3" x="297" y="-34">
+			<name x="287" y="-68">tott</name>
+			<label kind="invariant" x="287" y="-17">x&lt;3</label>
+		</location>
+		<location id="id4" x="-629" y="195">
+			<name x="-620" y="204">lomt</name>
+		</location>
+		<location id="id5" x="-357" y="119">
+			<name x="-367" y="85">ltmo</name>
+		</location>
+		<location id="id6" x="-76" y="212">
+			<name x="-59" y="204">mott</name>
+		</location>
+		<location id="id7" x="161" y="204">
+			<name x="178" y="195">tomt</name>
+		</location>
+		<location id="id8" x="484" y="204">
+			<name x="474" y="170">momt</name>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="569" y="195">trip!</label>
+			<nail x="561" y="127"/>
+			<nail x="561" y="280"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-170" y="-25">reset!</label>
+			<nail x="-145" y="-110"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="34" y="-8">reset!</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-280" y="-59">reset!</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-611" y="-267">reset!</label>
+			<nail x="-629" y="-238"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-238" y="255">danger!</label>
+			<nail x="-408" y="272"/>
+			<nail x="187" y="272"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-399" y="-340">danger!</label>
+			<nail x="-671" y="-51"/>
+			<nail x="-671" y="-331"/>
+			<nail x="501" y="-331"/>
+			<nail x="501" y="-25"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-51" y="63">danger!</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="8" y="110">danger!</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="374" y="59">danger!</label>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="179" y="68">danger!</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id3"/>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-289" y="68">danger!</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-586" y="85">danger!</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="93" y="-187">approach!</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-102" y="-93">approach!</label>
+			<label kind="assignment" x="-51" y="-148">x:=0, y:=0</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-357" y="-136">approach!</label>
+			<label kind="assignment" x="-382" y="-119">x:=0 , y:=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>Gate</name>
+		<declaration>clock z;</declaration>
+		<location id="id9" x="-314" y="-119">
+			<name x="-324" y="-153">idle</name>
+		</location>
+		<location id="id10" x="-500" y="153">
+			<name x="-467" y="136">norma</name>
+		</location>
+		<location id="id11" x="-127" y="17">
+			<name x="-119" y="-17">rese</name>
+		</location>
+		<location id="id12" x="76" y="340">
+			<name x="93" y="315">safety</name>
+		</location>
+		<location id="id13" x="586" y="144">
+			<name x="595" y="118">tripp</name>
+		</location>
+		<location id="id14" x="382" y="-127">
+			<name x="372" y="-161">final_safety</name>
+		</location>
+		<location id="id15" x="-348" y="297">
+			<name x="-374" y="263">signal</name>
+		</location>
+		<location id="id16" x="-535" y="-119">
+		</location>
+		<location id="id17" x="246" y="25">
+		</location>
+		<location id="id18" x="527" y="-34">
+		</location>
+		<location id="id19" x="399" y="331">
+		</location>
+		<init ref="id9"/>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-459" y="17">reset?</label>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="493" y="246">end!</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id19"/>
+			<label kind="synchronisation" x="229" y="340">trip?</label>
+		</transition>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="569" y="42">end!</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="450" y="-102">danger?</label>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="255" y="-76">warning!</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id17"/>
+			<label kind="synchronisation" x="110" y="153">danger?</label>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-578" y="17">danger?</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id16"/>
+			<label kind="synchronisation" x="-459" y="-178">approach?</label>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-195" y="289">sendtrip!</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-501" y="246">normalsign!</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-34" y="-144">reset?</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id9"/>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id11"/>
+			<label kind="synchronisation" x="-8" y="161">reset?</label>
+		</transition>
+	</template>
+	<template>
+		<name>Controller</name>
+		<declaration>clock y;</declaration>
+		<location id="id20" x="76" y="-187">
+			<name x="66" y="-221">zero</name>
+		</location>
+		<location id="id21" x="76" y="238">
+			<name x="34" y="263">engeneeringsafety</name>
+		</location>
+		<location id="id22" x="-246" y="204">
+			<name x="-256" y="170">fine</name>
+		</location>
+		<location id="id23" x="433" y="229">
+			<name x="450" y="221">caremust</name>
+		</location>
+		<location id="id24" x="450" y="-161">
+			<name x="440" y="-195">systemclose</name>
+		</location>
+		<init ref="id20"/>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="450" y="51">end?</label>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="238" y="8">end?</label>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id23"/>
+			<label kind="synchronisation" x="229" y="204">warning?</label>
+		</transition>
+		<transition>
+			<source ref="id22"/>
+			<target ref="id21"/>
+			<label kind="synchronisation" x="-119" y="195">sendtrip?</label>
+		</transition>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id22"/>
+			<label kind="synchronisation" x="-161" y="-76">normalsign?</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+//ProcessController = Controller();
+ProcessGate = Gate();
+ProcessGas = gas();
+ProcessCont = Controller();
+
+// List one or more processes to be composed into a system.
+system ProcessGate, ProcessGas , ProcessCont;  </system>
+	<queries>
+		<query>
+			<formula>A[]! (ProcessGas.mott &amp;&amp; ProcessGate.norma)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[]! (ProcessGas.tolt &amp;&amp; ProcessGate.tripp)</formula>
+			<comment></comment>
+		</query>
+		<query>
+			<formula>A[]!(ProcessGas.ltto &amp;&amp; ProcessGate.safety)</formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>
